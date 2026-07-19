@@ -14,10 +14,33 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+const siteUrl = "https://letoile-bakeshop.vercel.app";
+const title = "L'Étoile Bakeshop — Artisan Boulangerie";
+const description =
+  "Slow-fermented sourdough, hand-laminated croissants, and stone-oven pastries. Baked with devotion, crafted for connoisseurs since 1987.";
+
 export const metadata: Metadata = {
-  title: "L'Étoile Bakeshop — Artisan Boulangerie",
-  description:
-    "Slow-fermented sourdough, hand-laminated croissants, and stone-oven pastries. Baked with devotion, crafted for connoisseurs since 1987.",
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    siteName: "L'Étoile Bakeshop",
+    title,
+    description,
+    locale: "en_US",
+    // og:image is supplied by src/app/opengraph-image.tsx (generated at build time)
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    // twitter:image is supplied by src/app/opengraph-image.tsx
+  },
 };
 
 export default function RootLayout({
