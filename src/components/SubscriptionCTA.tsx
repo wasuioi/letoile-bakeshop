@@ -1,4 +1,24 @@
+"use client";
+
+import { useState } from "react";
+
+type Status = "idle" | "submitting" | "success";
+
 export default function SubscriptionCTA() {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<Status>("idle");
+
+  // Front-end-only demo. Nothing is persisted and no email is ever sent or
+  // stored — the delay below stands in for a network request so the loading
+  // and success states are visible. A real build would call a server action
+  // with validation, rate limiting, and an email provider.
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("submitting");
+    await new Promise((resolve) => setTimeout(resolve, 900));
+    setStatus("success");
+  }
+
   return (
     <section
       id="subscribe"
@@ -25,27 +45,44 @@ export default function SubscriptionCTA() {
           your standing order any morning.
         </p>
 
-        <form
-          className="mx-auto mt-10 flex max-w-md flex-col gap-3 sm:flex-row"
-          action="#"
-        >
-          <label htmlFor="cta-email" className="sr-only">
-            Email address
-          </label>
-          <input
-            id="cta-email"
-            type="email"
-            required
-            placeholder="you@example.com"
-            className="w-full rounded-full border border-white/15 bg-obsidian-soft/80 px-6 py-3.5 text-sm text-ivory placeholder:text-ivory-dim/60 backdrop-blur-md transition-colors duration-300 focus:border-gold focus:outline-none"
-          />
-          <button
-            type="submit"
-            className="shrink-0 rounded-full bg-gold px-8 py-3.5 text-sm font-semibold uppercase tracking-[0.14em] text-obsidian shadow-[0_0_28px_rgba(217,119,6,0.4)] transition-all duration-300 hover:bg-gold-bright hover:shadow-[0_0_44px_rgba(245,158,11,0.55)]"
-          >
-            Reserve My Bake
-          </button>
-        </form>
+        <div aria-live="polite">
+          {status === "success" ? (
+            <div className="mx-auto mt-10 max-w-md rounded-2xl border border-gold/40 bg-obsidian-soft/80 px-8 py-7 backdrop-blur-md">
+              <p className="font-display text-2xl italic text-gold-bright">
+                Your bake is reserved.
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-ivory-dim">
+                Check your inbox for confirmation — we&apos;ll see you at seven.
+              </p>
+            </div>
+          ) : (
+            <form
+              onSubmit={handleSubmit}
+              className="mx-auto mt-10 flex max-w-md flex-col gap-3 sm:flex-row"
+            >
+              <label htmlFor="cta-email" className="sr-only">
+                Email address
+              </label>
+              <input
+                id="cta-email"
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled={status === "submitting"}
+                placeholder="you@example.com"
+                className="w-full rounded-full border border-white/15 bg-obsidian-soft/80 px-6 py-3.5 text-sm text-ivory placeholder:text-ivory-dim/60 backdrop-blur-md transition-colors duration-300 focus:border-gold focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-bright focus-visible:ring-offset-2 focus-visible:ring-offset-obsidian disabled:opacity-60"
+              />
+              <button
+                type="submit"
+                disabled={status === "submitting"}
+                className="shrink-0 rounded-full bg-gold px-8 py-3.5 text-sm font-semibold uppercase tracking-[0.14em] text-obsidian shadow-[0_0_28px_rgba(217,119,6,0.4)] transition-all duration-300 hover:bg-gold-bright hover:shadow-[0_0_44px_rgba(245,158,11,0.55)] focus-visible:ring-2 focus-visible:ring-gold-bright focus-visible:ring-offset-2 focus-visible:ring-offset-obsidian focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-70"
+              >
+                {status === "submitting" ? "Reserving…" : "Reserve My Bake"}
+              </button>
+            </form>
+          )}
+        </div>
 
         <p className="mt-5 text-xs tracking-wide text-ivory-dim/70">
           120 places per bakery, per day. No commitment — cancel any morning
