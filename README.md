@@ -20,7 +20,7 @@ library, or state manager anywhere in it.
 
 | Desktop | Mobile |
 | --- | --- |
-| <img src="docs/screenshots/desktop.jpg" alt="The full L'Étoile Bakeshop page at desktop width" width="420"> | <img src="docs/screenshots/mobile.jpg" alt="The full L'Étoile Bakeshop page at mobile width" width="150"> |
+| <img src="docs/screenshots/desktop.webp" alt="The full L'Étoile Bakeshop page at desktop width" width="420"> | <img src="docs/screenshots/mobile.webp" alt="The full L'Étoile Bakeshop page at mobile width" width="150"> |
 
 ## Lighthouse
 
