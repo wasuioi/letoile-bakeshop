@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
+import { siteDescription, siteName, siteUrl } from "@/lib/site";
 
+// Only the weights the page actually renders: 400 (body serif and the italic
+// emphasis), 500 (headings), 600 (wordmark). 700 was being downloaded in both
+// styles and used nowhere.
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600"],
   style: ["normal", "italic"],
 });
 
@@ -14,10 +18,8 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-const siteUrl = "https://letoile-bakeshop.vercel.app";
-const title = "L'Étoile Bakeshop — Artisan Boulangerie";
-const description =
-  "Slow-fermented sourdough, hand-laminated croissants, and stone-oven pastries. Baked with devotion, crafted for connoisseurs since 1987.";
+const title = `${siteName} — Artisan Boulangerie`;
+const description = siteDescription;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -29,7 +31,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: siteUrl,
-    siteName: "L'Étoile Bakeshop",
+    siteName,
     title,
     description,
     locale: "en_US",

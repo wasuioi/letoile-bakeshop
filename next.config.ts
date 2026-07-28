@@ -1,14 +1,7 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "images.unsplash.com",
-      },
-    ],
-  },
-};
+// All imagery is served from public/images. No remote image hosts are
+// allowlisted, so next/image cannot be pointed at a third-party CDN.
+const nextConfig: NextConfig = {};
 
 export default nextConfig;

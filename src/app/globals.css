@@ -54,6 +54,17 @@ body {
   color: var(--color-obsidian);
 }
 
+/* One keyboard focus indicator for every interactive element, applied here
+   rather than per-component so nothing can be added later without one.
+   outline follows border-radius, so the pill buttons stay pills. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--color-gold-bright);
+  outline-offset: 3px;
+}
+
 /* Staggered entrance delays for the hero load sequence */
 .delay-1 {
   animation-delay: 0.1s;

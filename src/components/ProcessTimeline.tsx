@@ -21,7 +21,10 @@ const steps = [
 
 export default function ProcessTimeline() {
   return (
-    <section id="craft" className="bg-cream py-24 text-obsidian sm:py-32">
+    <section
+      id="craft"
+      className="scroll-mt-24 bg-cream py-24 text-obsidian sm:py-32"
+    >
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="mb-16 max-w-2xl">
           <p className="text-[12px] font-medium uppercase tracking-[0.4em] text-gold-deep">
@@ -39,7 +42,14 @@ export default function ProcessTimeline() {
               key={step.number}
               className="group py-10 md:px-10 md:first:pl-0 md:last:pr-0"
             >
-              <span className="font-display text-7xl font-medium text-obsidian/10 transition-colors duration-500 group-hover:text-gold/50">
+              {/* Decorative numeral: the sequence is already carried by
+                  document order, so it is hidden from assistive tech. Toned at
+                  /45 (#8c8b8a, 3.11:1 on cream) rather than the lighter ghost
+                  it started as, so it clears the 3:1 large-text threshold. */}
+              <span
+                aria-hidden="true"
+                className="font-display text-7xl font-medium text-obsidian/45 transition-colors duration-500 group-hover:text-gold/50"
+              >
                 {step.number}
               </span>
               <h3 className="mt-5 font-display text-2xl font-semibold">

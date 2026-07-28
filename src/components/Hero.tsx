@@ -2,7 +2,10 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden pt-40 pb-24 sm:pt-48">
+    <section
+      id="top"
+      className="relative scroll-mt-24 overflow-hidden pt-40 pb-24 sm:pt-48"
+    >
       {/* Ambient warmth behind the headline */}
       <div
         aria-hidden
@@ -48,10 +51,13 @@ export default function Hero() {
         <div className="animate-fade-up delay-5 mt-20 grid grid-cols-1 gap-5 lg:grid-cols-[1fr_2fr_1fr] lg:items-end">
           <div className="group relative hidden aspect-[3/4] overflow-hidden rounded-2xl border border-white/10 lg:block">
             <Image
-              src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80"
+              src="/images/croissants-cooling.webp"
               alt="Hand-laminated croissants cooling on a rack"
               fill
-              sizes="(min-width: 1024px) 25vw, 100vw"
+              // This frame is hidden below lg, so it only ever renders at
+              // ~300px. Stating a fixed width (no vw unit) lets next/image
+              // offer the smaller srcset candidates too.
+              sizes="300px"
               className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-obsidian/60 via-transparent to-transparent" />
@@ -62,11 +68,11 @@ export default function Hero() {
 
           <div className="group relative aspect-[16/10] overflow-hidden rounded-2xl border border-white/10 lg:aspect-[16/11]">
             <Image
-              src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1600&q=80"
+              src="/images/sourdough-morning-bake.webp"
               alt="Slow-baked sourdough loaves fresh from the stone oven"
               fill
               priority
-              sizes="(min-width: 1024px) 50vw, 100vw"
+              sizes="(min-width: 1024px) 580px, 100vw"
               className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-obsidian/70 via-transparent to-transparent" />
@@ -82,10 +88,13 @@ export default function Hero() {
 
           <div className="group relative hidden aspect-[3/4] overflow-hidden rounded-2xl border border-white/10 lg:block">
             <Image
-              src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&w=800&q=80"
+              src="/images/bakery-counter.webp"
               alt="Fresh pastries and bread arranged on the counter"
               fill
-              sizes="(min-width: 1024px) 25vw, 100vw"
+              // This frame is hidden below lg, so it only ever renders at
+              // ~300px. Stating a fixed width (no vw unit) lets next/image
+              // offer the smaller srcset candidates too.
+              sizes="300px"
               className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-obsidian/60 via-transparent to-transparent" />
