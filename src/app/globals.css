@@ -57,11 +57,25 @@ body {
 /* One keyboard focus indicator for every interactive element, applied here
    rather than per-component so nothing can be added later without one.
    outline follows border-radius, so the pill buttons stay pills. */
+/* Tailwind v4's `transition-colors` includes `outline-color`, so declaring the
+   ring colour inside :focus-visible makes it animate up from currentColor and
+   — because the outline only exists for the duration of the focus — it never
+   lands on gold. Setting the colour on the resting state instead leaves the
+   focus rule with nothing to animate: only width and style change, and those
+   are not transitionable. */
+a,
+button,
+input,
+[tabindex] {
+  outline-color: var(--color-gold-bright);
+}
+
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 [tabindex]:focus-visible {
-  outline: 2px solid var(--color-gold-bright);
+  outline-width: 2px;
+  outline-style: solid;
   outline-offset: 3px;
 }
 
