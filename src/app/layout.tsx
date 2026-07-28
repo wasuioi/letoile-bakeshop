@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
+import { siteDescription, siteName, siteUrl } from "@/lib/site";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -14,10 +15,8 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-const siteUrl = "https://letoile-bakeshop.vercel.app";
-const title = "L'Étoile Bakeshop — Artisan Boulangerie";
-const description =
-  "Slow-fermented sourdough, hand-laminated croissants, and stone-oven pastries. Baked with devotion, crafted for connoisseurs since 1987.";
+const title = `${siteName} — Artisan Boulangerie`;
+const description = siteDescription;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -29,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: siteUrl,
-    siteName: "L'Étoile Bakeshop",
+    siteName,
     title,
     description,
     locale: "en_US",

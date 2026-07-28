@@ -5,44 +5,39 @@ import ProcessTimeline from "@/components/ProcessTimeline";
 import SubscriptionCTA from "@/components/SubscriptionCTA";
 import Footer from "@/components/Footer";
 
-const siteUrl = "https://letoile-bakeshop.vercel.app";
+import {
+  address,
+  email,
+  openingHours,
+  siteDescription,
+  siteName,
+  siteUrl,
+} from "@/lib/site";
 
-// Bakery / LocalBusiness structured data, built from the content on the page
-// (flagship address + hours from the footer, founding year and tagline from
-// the hero). Lets search engines surface hours and location directly.
+// Bakery / LocalBusiness structured data. Address and hours come from the
+// same constants the footer renders, so the two can never disagree. Lets
+// search engines surface hours and location directly.
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Bakery",
-  name: "L'Étoile Bakeshop",
-  description:
-    "Slow-fermented sourdough, hand-laminated croissants, and stone-oven pastries. Baked with devotion, crafted for connoisseurs since 1987.",
+  name: siteName,
+  description: siteDescription,
   url: siteUrl,
   image: `${siteUrl}/opengraph-image`,
-  email: "bonjour@letoile.example",
+  email,
   foundingDate: "1987",
   priceRange: "€€",
   servesCuisine: ["Bakery", "French"],
   address: {
     "@type": "PostalAddress",
-    streetAddress: "18 Rue Cler",
-    postalCode: "75007",
-    addressLocality: "Paris",
-    addressCountry: "FR",
+    ...address,
   },
-  openingHoursSpecification: [
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "07:00",
-      closes: "14:00",
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Saturday", "Sunday"],
-      opens: "07:00",
-      closes: "13:00",
-    },
-  ],
+  openingHoursSpecification: openingHours.map(({ dayOfWeek, opens, closes }) => ({
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek,
+    opens,
+    closes,
+  })),
 };
 
 export default function Home() {

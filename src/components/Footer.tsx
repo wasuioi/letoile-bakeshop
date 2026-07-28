@@ -1,4 +1,11 @@
 import CurrentYear from "./CurrentYear";
+import {
+  address,
+  closedDaysLabel,
+  email,
+  formatHours,
+  openingHours,
+} from "@/lib/site";
 
 // Columns declare whether their items are navigable or plain information.
 // Opening hours and bakery addresses are not destinations on this single-page
@@ -25,7 +32,9 @@ const columns: FooterColumn[] = [
   {
     heading: "Hours",
     kind: "text",
-    items: ["Tue–Fri · 7:00–14:00", "Sat–Sun · 7:00–13:00", "Closed Mondays"],
+    // Derived from the same constant the Bakery JSON-LD uses, so the hours
+    // shown here and the hours indexed by search engines cannot disagree.
+    items: [...openingHours.map(formatHours), closedDaysLabel],
   },
 ];
 
@@ -73,10 +82,12 @@ export default function Footer() {
 
         <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row sm:items-center">
           <p className="text-xs tracking-wide text-ivory-dim/70">
-            © <CurrentYear /> L&apos;Étoile Bakeshop. All rights reserved.
+            © <CurrentYear />{" "}
+            L&apos;Étoile Bakeshop. All rights reserved.
           </p>
           <p className="text-xs tracking-wide text-ivory-dim/70">
-            18 Rue Cler, 75007 Paris — bonjour@letoile.example
+            {address.streetAddress}, {address.postalCode}{" "}
+            {address.addressLocality} — {email}
           </p>
         </div>
       </div>
