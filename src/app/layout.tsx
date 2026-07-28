@@ -3,10 +3,13 @@ import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 import { siteDescription, siteName, siteUrl } from "@/lib/site";
 
+// Only the weights the page actually renders: 400 (body serif and the italic
+// emphasis), 500 (headings), 600 (wordmark). 700 was being downloaded in both
+// styles and used nowhere.
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600"],
   style: ["normal", "italic"],
 });
 

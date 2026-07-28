@@ -90,6 +90,14 @@ export default function Footer() {
             {address.addressLocality} — {email}
           </p>
         </div>
+
+        {/* The address and email above are invented. Say so plainly rather
+            than letting a visitor assume this is a real business. */}
+        <div className="mt-6">
+          <p className="text-xs tracking-wide text-ivory-dim/80">
+            A concept project — fictional brand.
+          </p>
+        </div>
       </div>
     </footer>
   );
