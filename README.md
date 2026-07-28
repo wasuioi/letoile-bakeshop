@@ -24,22 +24,23 @@ library, or state manager anywhere in it.
 
 ## Lighthouse
 
-Measured with Lighthouse 12 against a local production build (`next build` +
-`next start`), which is the fair comparison because it removes network variance
-from the hosting provider. Mobile uses Lighthouse's default simulated 4G
-throttling.
+Measured with Lighthouse 12 against the deployed site above, not a local build.
+Mobile uses Lighthouse's default simulated 4G throttling, which is the harsher
+and more realistic of the two.
 
 | | Performance | Accessibility | Best Practices | SEO |
 | --- | --- | --- | --- | --- |
-| **Mobile** | 88 | 100 | 100 | 100 |
+| **Mobile** | 93 | 100 | 100 | 100 |
 | **Desktop** | 100 | 100 | 100 | 100 |
 
-Mobile Core Web Vitals: FCP 0.9s, LCP 3.9s, TBT 50ms, CLS 0, Speed Index 1.2s.
-LCP is the honest weak spot — under simulated 4G the largest element repaints
-when the serif webfont swaps in. Everything under my control (image weight,
-`sizes` accuracy, `priority` placement, font payload) has been tuned; closing
-the rest would mean changing the typeface or dropping the webfont, which is a
-brand decision rather than a technical one.
+Core Web Vitals — mobile: FCP 1.1s, LCP 3.1s, TBT 100ms, CLS 0, Speed Index
+2.9s. Desktop: FCP 0.3s, LCP 0.7s, TBT 0ms, CLS 0.
+
+Mobile LCP is the honest weak spot. Under simulated 4G the largest element
+repaints when the serif webfont swaps in. Everything under my control — image
+weight, `sizes` accuracy, `priority` placement, font payload — has been tuned;
+closing the rest would mean changing the typeface or dropping the webfont,
+which is a brand decision rather than a technical one.
 
 ## What this demonstrates
 
@@ -71,9 +72,10 @@ brand decision rather than a technical one.
 - **next/image** and **next/og**
 - Deployed on **Vercel**
 
-Almost everything is a server component. Only two pieces opt into the client:
-the navbar, which watches scroll position to shift its background, and the
-subscription form.
+Almost everything is a server component. Three pieces opt into the client: the
+navbar, which watches scroll position to shift its background; the subscription
+form, which manages its own submit state; and a one-line component that renders
+the copyright year on the client so it never freezes at build time.
 
 ## A note on the subscription form
 
