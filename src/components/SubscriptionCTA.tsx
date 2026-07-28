@@ -101,8 +101,11 @@ export default function SubscriptionCTA() {
               <p className="font-display text-2xl italic text-gold-bright">
                 Your bake is reserved.
               </p>
+              {/* No confirmation email is promised: Web3Forms notifies the
+                  bakery, and autoresponders are a paid feature we do not use.
+                  If one is ever enabled, the old line can come back. */}
               <p className="mt-2 text-sm leading-relaxed text-ivory-dim">
-                Check your inbox for confirmation — we&apos;ll see you at seven.
+                We have your details — see you at seven.
               </p>
             </div>
           ) : (
@@ -171,6 +174,10 @@ export default function SubscriptionCTA() {
         <p className="mt-5 text-xs tracking-wide text-ivory-dim/80">
           120 places per bakery, per day. No commitment — cancel any morning
           before 5 a.m.
+        </p>
+        <p className="mt-2 text-xs tracking-wide text-ivory-dim/80">
+          Demo form on a concept site — submissions reach a test inbox and are
+          not stored or used.
         </p>
       </div>
     </section>
