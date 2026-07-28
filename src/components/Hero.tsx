@@ -54,7 +54,10 @@ export default function Hero() {
               src="/images/croissants-cooling.webp"
               alt="Hand-laminated croissants cooling on a rack"
               fill
-              sizes="(min-width: 1024px) 300px, 100vw"
+              // This frame is hidden below lg, so it only ever renders at
+              // ~300px. Stating a fixed width (no vw unit) lets next/image
+              // offer the smaller srcset candidates too.
+              sizes="300px"
               className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-obsidian/60 via-transparent to-transparent" />
@@ -88,7 +91,10 @@ export default function Hero() {
               src="/images/bakery-counter.webp"
               alt="Fresh pastries and bread arranged on the counter"
               fill
-              sizes="(min-width: 1024px) 300px, 100vw"
+              // This frame is hidden below lg, so it only ever renders at
+              // ~300px. Stating a fixed width (no vw unit) lets next/image
+              // offer the smaller srcset candidates too.
+              sizes="300px"
               className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-obsidian/60 via-transparent to-transparent" />

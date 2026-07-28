@@ -42,7 +42,14 @@ export default function ProcessTimeline() {
               key={step.number}
               className="group py-10 md:px-10 md:first:pl-0 md:last:pr-0"
             >
-              <span className="font-display text-7xl font-medium text-obsidian/10 transition-colors duration-500 group-hover:text-gold/50">
+              {/* Decorative ghosted numeral. The sequence is already carried
+                  by document order, so it is hidden from assistive tech —
+                  which is also why its 1.24:1 contrast is not a WCAG 1.4.3
+                  failure (pure decoration is exempt). */}
+              <span
+                aria-hidden="true"
+                className="font-display text-7xl font-medium text-obsidian/10 transition-colors duration-500 group-hover:text-gold/50"
+              >
                 {step.number}
               </span>
               <h3 className="mt-5 font-display text-2xl font-semibold">

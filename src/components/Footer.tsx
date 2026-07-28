@@ -81,11 +81,11 @@ export default function Footer() {
         </div>
 
         <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row sm:items-center">
-          <p className="text-xs tracking-wide text-ivory-dim/70">
+          <p className="text-xs tracking-wide text-ivory-dim/80">
             © <CurrentYear />{" "}
             L&apos;Étoile Bakeshop. All rights reserved.
           </p>
-          <p className="text-xs tracking-wide text-ivory-dim/70">
+          <p className="text-xs tracking-wide text-ivory-dim/80">
             {address.streetAddress}, {address.postalCode}{" "}
             {address.addressLocality} — {email}
           </p>

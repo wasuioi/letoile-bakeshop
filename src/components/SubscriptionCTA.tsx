@@ -71,12 +71,12 @@ export default function SubscriptionCTA() {
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={status === "submitting"}
                 placeholder="you@example.com"
-                className="w-full rounded-full border border-white/15 bg-obsidian-soft/80 px-6 py-3.5 text-sm text-ivory placeholder:text-ivory-dim/60 backdrop-blur-md transition-colors duration-300 focus:border-gold focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-bright focus-visible:ring-offset-2 focus-visible:ring-offset-obsidian disabled:opacity-60"
+                className="w-full rounded-full border border-white/15 bg-obsidian-soft/80 px-6 py-3.5 text-sm text-ivory placeholder:text-ivory-dim/80 backdrop-blur-md transition-colors duration-300 focus:border-gold disabled:opacity-60"
               />
               <button
                 type="submit"
                 disabled={status === "submitting"}
-                className="shrink-0 rounded-full bg-gold px-8 py-3.5 text-sm font-semibold uppercase tracking-[0.14em] text-obsidian shadow-[0_0_28px_rgba(217,119,6,0.4)] transition-all duration-300 hover:bg-gold-bright hover:shadow-[0_0_44px_rgba(245,158,11,0.55)] focus-visible:ring-2 focus-visible:ring-gold-bright focus-visible:ring-offset-2 focus-visible:ring-offset-obsidian focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-70"
+                className="shrink-0 rounded-full bg-gold px-8 py-3.5 text-sm font-semibold uppercase tracking-[0.14em] text-obsidian shadow-[0_0_28px_rgba(217,119,6,0.4)] transition-all duration-300 hover:bg-gold-bright hover:shadow-[0_0_44px_rgba(245,158,11,0.55)] disabled:cursor-not-allowed disabled:opacity-70"
               >
                 {status === "submitting" ? "Reserving…" : "Reserve My Bake"}
               </button>
@@ -84,7 +84,7 @@ export default function SubscriptionCTA() {
           )}
         </div>
 
-        <p className="mt-5 text-xs tracking-wide text-ivory-dim/70">
+        <p className="mt-5 text-xs tracking-wide text-ivory-dim/80">
           120 places per bakery, per day. No commitment — cancel any morning
           before 5 a.m.
         </p>
