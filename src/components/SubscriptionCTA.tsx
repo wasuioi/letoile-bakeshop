@@ -1,6 +1,9 @@
 export default function SubscriptionCTA() {
   return (
-    <section id="subscribe" className="relative overflow-hidden py-28 sm:py-40">
+    <section
+      id="subscribe"
+      className="relative scroll-mt-24 overflow-hidden py-28 sm:py-40"
+    >
       {/* Radial gold glow */}
       <div
         aria-hidden

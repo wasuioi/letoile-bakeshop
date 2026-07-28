@@ -2,11 +2,12 @@
 
 import { useEffect, useState } from "react";
 
+// Every entry must resolve to a section that exists in page.tsx. There is no
+// Journal section on this single-page site, so there is no Journal link.
 const links = [
   { label: "Menu", href: "#menu" },
   { label: "Our Craft", href: "#craft" },
   { label: "Locations", href: "#locations" },
-  { label: "Journal", href: "#journal" },
 ];
 
 export default function Navbar() {

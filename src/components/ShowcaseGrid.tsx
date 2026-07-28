@@ -29,7 +29,7 @@ const items = [
 
 export default function ShowcaseGrid() {
   return (
-    <section id="menu" className="py-24 sm:py-32">
+    <section id="menu" className="scroll-mt-24 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="mb-16 flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
           <div>

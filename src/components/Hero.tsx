@@ -2,7 +2,10 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden pt-40 pb-24 sm:pt-48">
+    <section
+      id="top"
+      className="relative scroll-mt-24 overflow-hidden pt-40 pb-24 sm:pt-48"
+    >
       {/* Ambient warmth behind the headline */}
       <div
         aria-hidden

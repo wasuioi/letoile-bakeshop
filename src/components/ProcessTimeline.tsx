@@ -21,7 +21,10 @@ const steps = [
 
 export default function ProcessTimeline() {
   return (
-    <section id="craft" className="bg-cream py-24 text-obsidian sm:py-32">
+    <section
+      id="craft"
+      className="scroll-mt-24 bg-cream py-24 text-obsidian sm:py-32"
+    >
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="mb-16 max-w-2xl">
           <p className="text-[12px] font-medium uppercase tracking-[0.4em] text-gold-deep">
