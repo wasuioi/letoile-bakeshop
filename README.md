@@ -57,6 +57,10 @@ which is a brand decision rather than a technical one.
   WebP, cropped to the largest size its slot actually renders, with `sizes`
   matching the real layout and `priority` on the hero alone. Nothing is
   hotlinked, so no third-party CDN can break the page.
+- **A working form with honest states** — the subscription form posts to a real
+  inbox with no backend, filters bots with an off-screen honeypot, and reports
+  success only when delivery is confirmed. A failure shows an error and keeps
+  the typed address for a retry.
 - **Accessibility** — 100 on Lighthouse: a real document outline with no
   skipped heading levels, a visible focus indicator on every interactive
   element, all body text at or above 4.5:1 contrast, descriptive `alt` text,
@@ -79,10 +83,30 @@ the copyright year on the client so it never freezes at build time.
 
 ## A note on the subscription form
 
-The email form is **front-end only**. It validates, shows a loading state, and
-confirms — but nothing is stored and no email is ever sent or collected. Making
-it real would mean a server action with server-side validation, rate limiting,
-and an email provider.
+The form posts to [Web3Forms](https://web3forms.com), which forwards each
+submission to an inbox. There is no backend, no database, and no API route.
+
+- **The access key is a public client-side identifier, not a secret.** Web3Forms
+  embeds it in browser-visible code on every site that uses the service — that is
+  how the product works. So it is read straight from
+  `NEXT_PUBLIC_WEB3FORMS_KEY` and **no API route was added to proxy it**. A proxy
+  would add a serverless function, a cold start, and another failure mode while
+  protecting a value that is public by design.
+- **Spam is filtered with an off-screen honeypot field**, positioned out of view
+  rather than hidden with `display: none` or `type="hidden"` — bots routinely
+  skip both. It is outside the tab order and the accessibility tree, so no human
+  meets it.
+- **A failed submission shows an error, never a false success.** Web3Forms can
+  answer HTTP 200 with `success: false`, so the status code alone is not treated
+  as delivery: the response must be `ok` *and* report `success: true`. Every
+  other outcome — rejected request, offline browser, missing key — lands in an
+  error state that keeps the form and the typed address on screen for a retry.
+
+Known constraint: the free tier allows **250 submissions per month**.
+Autoresponders are a paid feature and are not enabled, so the confirmation copy
+deliberately promises nothing the site does not actually do — it does not tell
+the visitor to check their inbox. Submissions reach a test inbox and are not
+stored or used, which the form says on the page.
 
 ## Running locally
 
